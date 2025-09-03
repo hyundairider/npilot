@@ -30,6 +30,8 @@ void detect_board_type(void) {
   } else if(detect_with_pull(GPIOA, 13, PULL_DOWN)) { // Rev AB deprecated, so no pullup means black. In REV C, A13 is pulled up to 5V with a 10K
     // grey is deprecated
   } else if(!detect_with_pull(GPIOB, 15, PULL_UP)) {
+    hw_type = HW_TYPE_DOS;
+    current_board = &board_dos;
     // uno is deprecated
   } else {
     hw_type = HW_TYPE_BLACK_PANDA;
